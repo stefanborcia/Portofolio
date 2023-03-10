@@ -1,19 +1,29 @@
 ﻿@inherits LayoutComponentBase
-
+<RadzenDialog />
+<RadzenNotification />
+<RadzenContextMenu />
+<RadzenTooltip />
 <PageTitle>Portofolio</PageTitle>
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<RadzenLayout Style="height: 300px; grid-template-columns: 1fr auto; grid-template-areas: 'rz-header rz-header' 'rz-body rz-sidebar'">
+    <RadzenHeader>
+        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End" AlignItems="AlignItems.Center" Gap="1rem">
+            <RadzenLabel Text="Borcia Iulian Stefan" />
+            <RadzenSidebarToggle Click="@(() => sidebar3Expanded = !sidebar3Expanded)" Class="rz-m-0"/>
+        </RadzenStack>
+    </RadzenHeader>
+    <RadzenSidebar @bind-Expanded="@sidebar3Expanded">
+        <RadzenPanelMenu>
+            <RadzenPanelMenuItem Text="Home" Icon="home"/>
+            <RadzenPanelMenuItem Text="About Me" Icon="account_box"/>
+            <RadzenPanelMenuItem Text="My Projects" Icon="assessment"/>
+        </RadzenPanelMenu>
+    </RadzenSidebar>
+    <RadzenBody>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
+    </RadzenBody>
+</RadzenLayout>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+@code {
+    bool sidebar3Expanded = true;
+}
